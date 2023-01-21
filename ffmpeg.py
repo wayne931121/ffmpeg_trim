@@ -55,7 +55,3 @@ if ia>0:
   map += " -map [out_a]"
 command = "ffmpeg -i \"{}\" -filter_complex \"{}\" {} -c:v h264 -c:a aac \"{}\"".format(input, filter_complex, map, output)
 print(command)
-
-ffmpeg -i "input.mp4" -filter_complex "[0:v]trim=start=0\\:0:end=1\\:0,setpts=PTS-STARTPTS[v0];[0:v]trim=start=1\\:0:end=2\\:0,setpts=PTS-STARTPTS,setpts=PTS/3[v1];[0:v]trim=start=2\\:0:end=3\\:0,setpts=PTS-STARTPTS[v2];[v0][v1][v2]concat=n=3:v=1:a=0[out_v]" -map [out_v] -c:v h264 -c:a aac "output.mp4"
-ffmpeg -i "input.mp4" -filter_complex "[0:v]trim=start=0\\:0:end=1\\:0,setpts=PTS-STARTPTS[v0];[0:v]trim=start=1\\:0:end=2\\:0,setpts=PTS-STARTPTS,setpts=PTS/3[v1];[0:v]trim=start=2\\:0:end=3\\:0,setpts=PTS-STARTPTS[v2];[0:a]atrim=start=0\\:0:end=1\\:0,asetpts=PTS-STARTPTS[a0];[0:a]atrim=start=1\\:0:end=2\\:0,asetpts=PTS-STARTPTS,atempo=3[a1];[0:a]atrim=start=2\\:0:end=3\\:0,asetpts=PTS-STARTPTS[a2];[v0][v1][v2]concat=n=3:v=1:a=0[out_v];[a0][a1][a2]concat=n=3:v=0:a=1[out_a]" -map [out_v] -map [out_a] -c:v h264 -c:a aac "output.mp4"
-ffmpeg -i "input.mp4" -filter_complex "[0:v]trim=start=0\\:0:end=1\\:0,setpts=PTS-STARTPTS[v0];[0:v]trim=start=1\\:0:end=2\\:0,setpts=PTS-STARTPTS,setpts=PTS/3[v1];[0:v]trim=start=2\\:0:end=3\\:0,setpts=PTS-STARTPTS[v2];[0:a]atrim=start=0\\:0:end=1\\:0,asetpts=PTS-STARTPTS[a0];[0:a]atrim=start=1\\:0:end=2\\:0,asetpts=PTS-STARTPTS,atempo=3[a1];[0:a]atrim=start=2\\:0:end=3\\:0,asetpts=PTS-STARTPTS[a2];[v0][a0][v1][a1][v2][a2]concat=n=3:v=1:a=1[out_v_a]" -map [out_v_a] -c:v h264 -c:a aac "output.mp4"
