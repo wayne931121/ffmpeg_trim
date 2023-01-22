@@ -65,8 +65,6 @@ optional arguments:
 Use other file:
 ```cmd
 C:\Users\Desktop>python ffmpeg.py  -f trim1.txt
-Use setting: ['0:0', '1:0,speed=5', '2:0,speed=0.5', '3:0']
-
 ffmpeg -i "input.mp4" -filter_complex "[0:v]trim=start=0\\:0:end=1\\:0,setpts=PTS-STARTPTS[v0];[0:v]trim=start=1\\:0:end=2\\:0,setpts=PTS-STARTPTS,setpts=PTS/5[v1];[0:v]trim=start=2\\:0:end=3\\:0,setpts=PTS-STARTPTS,setpts=PTS/0.5[v2];[0:a]atrim=start=0\\:0:end=1\\:0,asetpts=PTS-STARTPTS[a0];[0:a]atrim=start=1\\:0:end=2\\:0,asetpts=PTS-STARTPTS,atempo=5[a1];[0:a]atrim=start=2\\:0:end=3\\:0,asetpts=PTS-STARTPTS,atempo=0.5[a2];[v0][v1][v2]concat=n=3:v=1:a=0[out_v];[a0][a1][a2]concat=n=3:v=0:a=1[out_a]" -map [out_v] -map [out_a] -c:v h264 -c:a aac "output.mp4"
 ```
 Other Example:
