@@ -19,7 +19,7 @@ if not string:
   except Exception as e:
     print(e)
     print("Use Default Settting.\n")
-    string = "0:0 1:0,speed=3 2:0 3:0\n"
+    string = "0:0 1:0,speed=3 2:0 3:0"
 string = string.replace("\n", " ")
 string = string.replace(", ", ",").replace(",  ", ",").replace(",   ", ",")
 string = string.replace("= ", "=").replace(" = ", "=").replace(" =", "=")
