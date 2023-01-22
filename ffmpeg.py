@@ -28,7 +28,7 @@ while ("  " in string):
 arrays = string.split(" ")
 for check_empty in range(0, len(arrays))[::-1]:
   if not arrays[check_empty]: arrays.pop(check_empty)
-print("Use setting:", arrays, "\n")
+#print("Use setting:", arrays, "\n")
 i = 0
 iv = 0
 ia = 0
